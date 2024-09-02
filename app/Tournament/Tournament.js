@@ -1,9 +1,7 @@
-const { JsonFileParseAdaper } = require("../Utils/fileParsing");
 const { Group } = require("./Group");
-
-
-let GROUP_PATH = require("../Utils/constants").constants.groupPath;
-let jsonFileParseAdaper = require("../Utils/fileParsing").JsonFileParseAdaper;
+const jsonFileParseAdaper = require("../Utils/fileParsing").JsonFileParseAdaper;
+const GROUP_PATH = require("../Utils/constants").constants.groupPath;
+const TournamentGame = require("./TournamentGame").TournamentGame;
 
 
 // this class represents the Tournament basically
@@ -14,6 +12,7 @@ let jsonFileParseAdaper = require("../Utils/fileParsing").JsonFileParseAdaper;
         this.Groups = new Array();
         this.init_tournament();
         
+        this.scoreBoard = new Array();
     }
 
 
@@ -39,14 +38,68 @@ let jsonFileParseAdaper = require("../Utils/fileParsing").JsonFileParseAdaper;
       
     }
 
+
+    // note: this algorithmic is really slow .. i might need to rewrighte this
+    performGroupRound(){
+
+    for( var group in this.Groups){
+       
+        let teams = this.Groups[group].getTeams();
+        console.log(" Group %s", this.Groups[group].getName());
+        
+        for(let i = 0;  i < 4; i ++){
+
+            for(let j = i + 1 ; j < 4; j++){
+              
+                let game = new TournamentGame(teams[i], teams[j]);
+
+                game.play();
+              
+            
+                              
+              
+
+
+
+
+
+            }
+
+
+
+
+
+
+        }
+
+
+
+
+
+    }
+
+    }
+
+
+    showScoreBoard(){
+
+    }
+
+
+
     play(){
         
+        this.performGroupRound();
+
+
+
+
+
 
 
         
     }
 
-    
 
 
 

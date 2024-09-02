@@ -26,6 +26,16 @@ addTeam(teamJsonObject){
 
 
 
+getName(){
+    return this.GroupName;
+}
+
+getTeams(){
+    return this.Teams;
+}
+
+
+
 
 
 }
